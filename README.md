@@ -11,6 +11,8 @@ $ bin/kafka-server-start.sh config/server.properties
 
 That's it. Don't have to create topic, this demo program will create the topic `user-info-topic` automatically.
 
+#### Start Demo Application
+
 Since this is a Maven project, so we can use Maven command
 
 ```
