@@ -1,0 +1,9 @@
+{
+  "namespace": "cc.unmi.data",
+  "type": "record",
+  "name": "User",
+  "fields": [
+    {"name": "name", "type": "string"},
+    {"name": "address", "type": ["string", "null"]}
+  ]
+}
