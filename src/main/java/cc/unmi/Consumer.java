@@ -3,14 +3,16 @@ package cc.unmi;
 import cc.unmi.serialization.AvroDeserializer;
 import org.apache.avro.specific.SpecificRecordBase;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
+import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.common.serialization.StringDeserializer;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Properties;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 public class Consumer<T extends SpecificRecordBase> {
 
@@ -22,12 +24,8 @@ public class Consumer<T extends SpecificRecordBase> {
 
         ConsumerRecords<String, T> records = consumer.poll(10);
 
-        List<T> data = new ArrayList<T>(records.count());
-        records.forEach(record -> {
-            data.add(record.value());
-        });
-
-        return data;
+        return StreamSupport.stream(records.spliterator(), false)
+                .map(ConsumerRecord::value).collect(Collectors.toList());
     }
 
     private Properties getProperties() {
