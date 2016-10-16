@@ -25,4 +25,4 @@ to start the Demo application. It's a simple interactive interface
 
 Here is the screenshot
 
-![Kafka Avro Demo](Kafka-Avro-Demo.png)!
+->![Kafka Avro Demo](Kafka-Avro-Demo.png)!<-
