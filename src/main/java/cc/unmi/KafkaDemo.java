@@ -20,10 +20,10 @@ public class KafkaDemo {
 
             switch (input) {
                 case "send":
-                    new Producer<User>().sendData(Topic.USER, new User("Yanbin", "Address: " + new Random().nextInt()));
+                    producer.sendData(Topic.USER, new User("Yanbin", "Address: " + new Random().nextInt()));
                     break;
                 case "receive":
-                    List<User> users = new Consumer<User>().receive(Topic.USER);
+                    List<User> users = consumer.receive(Topic.USER);
                     if(users.isEmpty()) {
                         System.out.println("Received nothing");
                     } else {

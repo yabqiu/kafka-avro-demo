@@ -11,11 +11,9 @@ import java.util.Properties;
 
 public class Producer<T extends SpecificRecordBase> {
 
+    private KafkaProducer<String, T> producer = new KafkaProducer<>(getProperties());
+
     public void sendData(Topic topic, T data) {
-        Properties props = getProperties();
-
-        KafkaProducer<String, T> producer = new KafkaProducer<>(props);
-
         producer.send(new ProducerRecord<>(topic.topicName, data),
                 (metadata, exception) -> {
                     if (exception == null) {

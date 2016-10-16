@@ -16,12 +16,12 @@ import java.util.stream.StreamSupport;
 
 public class Consumer<T extends SpecificRecordBase> {
 
+    private KafkaConsumer<String, T> consumer = new KafkaConsumer<>(getProperties());
+
     public List<T> receive(Topic topic) {
-        Properties props = getProperties();
-        KafkaConsumer<String, T> consumer = new KafkaConsumer<>(props);
-
+//        TopicPartition partition = new TopicPartition(topic.topicName, 0);
         consumer.subscribe(Collections.singletonList(topic.topicName));
-
+//        consumer.assign(Collections.singletonList(partition));
         ConsumerRecords<String, T> records = consumer.poll(10);
 
         return StreamSupport.stream(records.spliterator(), false)
