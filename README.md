@@ -25,4 +25,6 @@ to start the Demo application. It's a simple interactive interface
 
 Here is the screenshot
 
-->![Kafka Avro Demo](Kafka-Avro-Demo.png)!<-
+<div style="text-align:center">
+![Kafka Avro Demo](Kafka-Avro-Demo.png)!
+</div>
